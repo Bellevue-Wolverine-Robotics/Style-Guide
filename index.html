@@ -966,6 +966,14 @@ order:</p>
 
 <h4 id="s4.8.8-numeric-literals">4.8.8 Numeric Literals</h4>
 
+<p><code>double</code> literals always have one decimal and <u>never</u> use any suffix due
+to being overwhelmingly more common than <code>float</code> literals. For example, use <code>double num = 2.0;</code>
+rather than <code class="badcode">double num = 2.0d;</code> or <code class="badcode">double num = 2;</code>.</p>
+
+<p><code>float</code> literals, on the other hand, <u>always</u> use a lowercase <code>f</code> suffix
+and always have one decimal. For example, use <code>float num = 3.0f;</code>
+rather than <code class="badcode">float num = (float)3.0;</code> or <code class="badcode">float num = 3;</code>.</p>
+
 <p><code>long</code>-valued integer literals use an uppercase <code>L</code> suffix, never
 lowercase (to avoid confusion with the digit <code>1</code>). For example, <code>3000000000L</code>
 rather than <code class="badcode">3000000000l</code>.</p>

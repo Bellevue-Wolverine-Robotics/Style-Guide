@@ -995,13 +995,34 @@ rather than <code class="badcode">3000000000l</code>.</p>
 
 <h3 id="s5.1-identifier-names">5.1 Rules common to all identifiers</h3>
 
+<h4 id="s5.1.1-allowed-characters">5.1.1 Allowed characters in names</h4>
+
 <p>Identifiers use only ASCII letters and digits, and, in a small number of cases noted below,
 underscores. Thus each valid identifier name is matched by the regular expression
-<code>\w+</code> .</p>
+<code>\w+</code> where <code>\w</code>denotes any ASCII letter (A–Z, a–z), digit (0–9), or underscore (_).</p>
 
-<p>In Google Style, special prefixes or suffixes are <strong>not</strong> used. For example, these
-names are not Google Style: <code class="badcode">name_</code>, <code class="badcode">mName</code>,
-<code class="badcode">s_name</code> and <code class="badcode">kName</code>.</p>
+<h4 id="s5.1.2-prefixes">5.1.2 Special prefixes/suffixes disallowed</h4>
+
+<p>Special prefixes or suffixes are <strong>not</strong> used. For example, these
+names do not follow Wolverine Robotics Style: <code class="badcode">name_</code>, <code class="badcode">mName</code>,
+<code class="badcode">s_name</code> and <code class="badcode">kName</code>. There is no need to specify
+a variable's type.</p>
+
+<h4 id="s5.1.3-measurement-units">5.1.3 Unit specification</h4>
+
+<p>Clear units of measurement are oftentimes key to avoid confusion and bad conversions.
+  Thus, applicable identifier names should always denote their unit to be appropriate. For example, These
+  names properly denote units: <code>velocityFeetPerSecond</code>, <code>IMPULSE_NEWTON_SECONDS</code>,
+  <code>weightNewtons</code>, <code>getMassKilograms</code>.
+</p>
+
+<p>It's imperative that you <b>still include the unitless name</b> to mantain clarity. Replacing
+names with units is unacceptable. For example, these names do not follow Wolverine Robotics Style:
+<code class="badcode">ROBOT_METERS_PER_SECOND</code>, <code class="badcode">rotationsPerSecond</code>.
+Respectively, better and acceptable options would be <code>ROBOT_VELOCITY_METERS_PER_SECOND</code> and
+<code>angularVelocityRotationsPerSecond</code>.
+</p>
+
 
 
 

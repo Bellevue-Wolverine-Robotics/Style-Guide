@@ -410,11 +410,7 @@ you may choose to wrap the line earlier than where this rule strictly requires.<
 
   <li>Command lines in a comment that may be copied-and-pasted into a shell.</li>
 
-  <li>Very long identifiers, on the rare occasions they are called for, are allowed to exceed the
-  column limit. In that case, the valid wrapping for the surrounding code is as produced by
-
-
-    <a href="https://github.com/google/google-java-format">google-java-format</a>.
+  <li>Very long identifiers, on the rare occasions they are called for.
   </li>
 </ol>
 
@@ -441,8 +437,7 @@ without the need to line-wrap.</p>
 
 <ol>
   <li>When a line is broken at a <em>non-assignment</em> operator the break comes <em>before</em>
-  the symbol. (Note that this is not the same practice used in Google style for other languages,
-  such as C++ and JavaScript.)
+  the symbol.
     <ul>
       <li>This also applies to the following "operator-like" symbols:
         <ul>
@@ -746,7 +741,7 @@ more statements. (These definitions match the Java Language Specification,
 starts with this indentation.</p>
 
 <p>In a new-style switch, a switch rule can be written on a single line if it otherwise follows
-Google style. (It must not exceed the column limit, and if it contains a non-empty block then
+Wolverine Robotics style. (It must not exceed the column limit, and if it contains a non-empty block then
 there must be a line break after <code class="prettyprint lang-java">{</code>.) The line-wrapping
 rules of <a href="#s4.5-line-wrapping">Section 4.5</a> apply, including the indent for
 continuation lines. For a switch rule with a non-empty block after the arrow, the same rules apply
@@ -803,7 +798,7 @@ at the end of the statement group.</p>
 <p>The Java language requires switch expressions and many kinds of switch statements to be
 <em>exhaustive</em>. That effectively means that every possible value that could be switched on will
 be matched by one of the switch labels. A switch is exhaustive if it has a <code class="prettyprint lang-java">default</code> label, but also for example if the value being switched
-on is an enum and every value of the enum is matched by a switch label. Google Style requires
+on is an enum and every value of the enum is matched by a switch label. Wolverine Robotics Style requires
 <em>every</em> switch to be exhaustive, even those where the language itself does not require it.
 This may require adding a <code class="prettyprint lang-java">default</code> label, even if it
 contains no code.</p>
@@ -999,8 +994,8 @@ rather than <code class="badcode">3000000000l</code>.</p>
 underscores. Thus each valid identifier name is matched by the regular expression
 <code>\w+</code> .</p>
 
-<p>In Google Style, special prefixes or suffixes are <strong>not</strong> used. For example, these
-names are not Google Style: <code class="badcode">name_</code>, <code class="badcode">mName</code>,
+<p>In Wolverine Robotics Style, special prefixes or suffixes are <strong>not</strong> used. For example, these
+names are not Wolverine Robotics Style: <code class="badcode">name_</code>, <code class="badcode">mName</code>,
 <code class="badcode">s_name</code> and <code class="badcode">kName</code>.</p>
 
 
@@ -1123,7 +1118,7 @@ be styled as constants.</p>
 
 <p>Sometimes there is more than one reasonable way to convert an English phrase into camel case,
 such as when acronyms or unusual constructs like "IPv6" or "iOS" are present. To improve
-predictability, Google Style specifies the following (nearly) deterministic scheme.</p>
+predictability, Wolverine Robotics Style specifies the following (nearly) deterministic scheme.</p>
 
 <p>Beginning with the prose form of the name:</p>
 

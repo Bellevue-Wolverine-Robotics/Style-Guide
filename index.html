@@ -623,16 +623,23 @@ end of a line; it addresses only <em>interior</em> space.</p>
 practice of adding a variable number of additional spaces in your code with the goal of making
 certain tokens appear directly below certain other tokens on previous lines.</p>
 
-<p>This practice is permitted, but is <strong>never required</strong> by Google Style. It is not
-even required to <em>maintain</em> horizontal alignment in places where it was already used.</p>
+<p>This practice is permitted, but is <strong>never required</strong>. However, consistency
+  is always important. Ensure variable declarations with no seperating empty lines are or are not
+  horizontally aligned; <strong>do not mix</strong>.</p>
 
-<p>Here is an example without alignment, then using alignment:</p>
+<p>Here is an example without alignment, then using alignment, and then an incorrect mix of both:</p>
 
 <pre class="prettyprint lang-java">private int x; // this is fine
-private Color color; // this too
+private String title; // this too
+private Color color; // this as well
 
-private int   x;      // permitted, but future edits
-private Color color;  // may leave it unaligned
+private int    x;      // permitted, but future
+private String title;  // edits may leave 
+private Color  color;  // it unaligned
+
+private int    x;     // unacceptable, inconsistently
+private String title; // aligned and
+private Color color; // unaligned
 </pre>
 
 <p class="tip"><strong>Tip:</strong> Alignment can aid readability, but attempting to preserve

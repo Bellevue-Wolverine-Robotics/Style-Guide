@@ -497,7 +497,7 @@ code, <em>not necessarily</em> code that fits in the smallest number of lines.</
 once from the original line.</p>
 
 <p>Section 4.6.3 on <a href="#s4.6.3-horizontal-alignment">Horizontal alignment</a> addresses
-the discouraged practice of using a variable number of spaces to align certain tokens with
+the disallowed practice of using a variable number of spaces to align certain tokens with
 previous lines.</p>
 
 <h3 id="s4.6-whitespace">4.6 Whitespace</h3>
@@ -612,30 +612,32 @@ comments and Javadoc, a single ASCII space also appears in the following places
 <p>This rule is never interpreted as requiring or forbidding additional space at the start or
 end of a line; it addresses only <em>interior</em> space.</p>
 
-<h4 id="s4.6.3-horizontal-alignment">4.6.3 Horizontal alignment: never required</h4>
+<h4 id="s4.6.3-horizontal-alignment">4.6.3 Horizontal alignment: not allowed</h4>
 
 <p class="terminology"><strong>Terminology Note:</strong> <em>Horizontal alignment</em> is the
 practice of adding a variable number of additional spaces in your code with the goal of making
 certain tokens appear directly below certain other tokens on previous lines.</p>
 
-<p>This practice is permitted, but is <strong>never required</strong> by Google Style. It is not
-even required to <em>maintain</em> horizontal alignment in places where it was already used.</p>
+<p>While alignment can aid readability, it creates code that is
+difficult to maintain, because changes to one line that disrupt the alignment, require all other
+neighbooring lines to be changed. Introducing formatting changes on
+otherwise unaffected lines corrupts version history, slows down reviewers, and exacerbates merge
+conflicts. Rather than trying to deal with these associated problems,
+it is easier to avoid this practice.</p>
 
-<p>Here is an example without alignment, then using alignment:</p>
+If absolute necessary for readability, use <a href="s4.5.2-line-wrapping-indent">line wraping</a>,
+as described in section 4.5.2, however, it is preferable to leave lines as is.</p>
+
+<p>Here is an example without alignment, and then with alignment.</p>
 
 <pre class="prettyprint lang-java">private int x; // this is fine
-private Color color; // this too
+private String title; // this too
+private Color color; // this as well
 
-private int   x;      // permitted, but future edits
-private Color color;  // may leave it unaligned
+private int    x;      // not permitted, future
+private String title;  // edits may leave 
+private Color  color;  // it unaligned
 </pre>
-
-<p class="tip"><strong>Tip:</strong> Alignment can aid readability, but attempting to preserve
-alignment for its own sake creates future problems. For example, consider a change that touches only
-one line. If that change disrupts the previous alignment, it's important **not** to introduce
-additional changes on nearby lines simply to realign them. Introducing formatting changes on
-otherwise unaffected lines corrupts version history, slows down reviewers, and exacerbates merge
-conflicts. These practical concerns take priority over alignment.</p>
 
 <a id="parentheses"></a>
 <h3 id="s4.7-grouping-parentheses">4.7 Grouping parentheses: recommended</h3>
@@ -990,9 +992,33 @@ rather than <code class="badcode">3000000000l</code>.</p>
 
 <h3 id="s5.1-identifier-names">5.1 Rules common to all identifiers</h3>
 
+<h4 id="s5.1.1-allowed-characters">5.1.1 Allowed characters in names</h4>
+
 <p>Identifiers use only ASCII letters and digits, and, in a small number of cases noted below,
 underscores. Thus each valid identifier name is matched by the regular expression
-<code>\w+</code> .</p>
+<code>\w+</code> where <code>\w</code>denotes any ASCII letter (A–Z, a–z), digit (0–9), or underscore (_).</p>
+
+<h4 id="s5.1.2-prefixes">5.1.2 Special prefixes/suffixes disallowed</h4>
+
+<p>Special prefixes or suffixes are <strong>not</strong> used. For example, these
+names do not follow Wolverine Robotics Style: <code class="badcode">name_</code>, <code class="badcode">mName</code>,
+<code class="badcode">s_name</code> and <code class="badcode">kName</code>. There is no need to specify
+a variable's type.</p>
+
+<h4 id="s5.1.3-measurement-units">5.1.3 Unit specification</h4>
+
+<p>Clear units of measurement are oftentimes key to avoid confusion and bad conversions.
+  Thus, applicable identifier names should always denote their unit to be appropriate. For example, These
+  names properly denote units: <code>velocityFeetPerSecond</code>, <code>IMPULSE_NEWTON_SECONDS</code>,
+  <code>weightNewtons</code>, <code>getMassKilograms</code>.
+</p>
+
+<p>It's imperative that you <b>still include the unitless name</b> to mantain clarity. Replacing
+names with units is unacceptable. For example, these names do not follow Wolverine Robotics Style:
+<code class="badcode">ROBOT_METERS_PER_SECOND</code>, <code class="badcode">rotationsPerSecond</code>.
+Respectively, better and acceptable options would be <code>ROBOT_VELOCITY_METERS_PER_SECOND</code> and
+<code>angularVelocityRotationsPerSecond</code>.
+</p>
 
 <p>In Wolverine Robotics Style, special prefixes or suffixes are <strong>not</strong> used. For example, these
 names are not Wolverine Robotics Style: <code class="badcode">name_</code>, <code class="badcode">mName</code>,

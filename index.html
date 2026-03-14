@@ -497,7 +497,7 @@ code, <em>not necessarily</em> code that fits in the smallest number of lines.</
 once from the original line.</p>
 
 <p>Section 4.6.3 on <a href="#s4.6.3-horizontal-alignment">Horizontal alignment</a> addresses
-the disallowed practice of using a variable number of spaces to align certain tokens with
+the discouraged practice of using a variable number of spaces to align certain tokens with
 previous lines.</p>
 
 <h3 id="s4.6-whitespace">4.6 Whitespace</h3>
@@ -612,32 +612,37 @@ comments and Javadoc, a single ASCII space also appears in the following places
 <p>This rule is never interpreted as requiring or forbidding additional space at the start or
 end of a line; it addresses only <em>interior</em> space.</p>
 
-<h4 id="s4.6.3-horizontal-alignment">4.6.3 Horizontal alignment: not allowed</h4>
+<h4 id="s4.6.3-horizontal-alignment">4.6.3 Horizontal alignment: never required</h4>
 
 <p class="terminology"><strong>Terminology Note:</strong> <em>Horizontal alignment</em> is the
 practice of adding a variable number of additional spaces in your code with the goal of making
 certain tokens appear directly below certain other tokens on previous lines.</p>
 
-<p>While alignment can aid readability, it creates code that is
-difficult to maintain, because changes to one line that disrupt the alignment, require all other
-neighbooring lines to be changed. Introducing formatting changes on
-otherwise unaffected lines corrupts version history, slows down reviewers, and exacerbates merge
-conflicts. Rather than trying to deal with these associated problems,
-it is easier to avoid this practice.</p>
+<p>This practice is permitted, but is <strong>never required</strong>. However, consistency
+  is always important. Ensure variable declarations with no seperating empty lines are or are not
+  horizontally aligned; <strong>do not mix</strong>.</p>
 
-If absolute necessary for readability, use <a href="s4.5.2-line-wrapping-indent">line wraping</a>,
-as described in section 4.5.2, however, it is preferable to leave lines as is.</p>
-
-<p>Here is an example without alignment, and then with alignment.</p>
+<p>Here is an example without alignment, then using alignment, and then an incorrect mix of both:</p>
 
 <pre class="prettyprint lang-java">private int x; // this is fine
 private String title; // this too
 private Color color; // this as well
 
-private int    x;      // not permitted, future
+private int    x;      // permitted, but future
 private String title;  // edits may leave 
 private Color  color;  // it unaligned
+
+private int    x;     // unacceptable, inconsistently
+private String title; // aligned and
+private Color color; // unaligned
 </pre>
+
+<p class="tip"><strong>Tip:</strong> Alignment can aid readability, but attempting to preserve
+alignment for its own sake creates future problems. For example, consider a change that touches only
+one line. If that change disrupts the previous alignment, it's important **not** to introduce
+additional changes on nearby lines simply to realign them. Introducing formatting changes on
+otherwise unaffected lines corrupts version history, slows down reviewers, and exacerbates merge
+conflicts. These practical concerns take priority over alignment.</p>
 
 <a id="parentheses"></a>
 <h3 id="s4.7-grouping-parentheses">4.7 Grouping parentheses: recommended</h3>
